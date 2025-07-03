@@ -5,29 +5,29 @@ class NewsServices {
   final Dio dio;
   NewsServices(this.dio);
 
-  Future<List<ArticleModel>> gettNews({String? category}) async {
-    return await Future.delayed(const Duration(seconds: 5), () async {
-      try {
-        String cat = category ?? 'general';
-        print('category = $cat');
-        var response = await dio.get(
-            'https://newsapi.org/v2/top-headlines?country=us&category=$cat&apiKey=3ab38eb67ab144c8af77c0adea84b57d');
-        Map<String, dynamic> jsonData = response.data;
-        List<dynamic> articles = jsonData['articles'];
-        List<ArticleModel> articlesList = [];
+  Future<List<ArticleModel>> gettNews({required String category}) async {
+    try {
+      print('category = $category');
+      var response = await dio.get(
+        'https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=3ab38eb67ab144c8af77c0adea84b57d',
+      );
 
-        for (var article in articles) {
-          ArticleModel articleModel = ArticleModel(
-              image: article['urlToImage'],
-              title: article['title'],
-              subtitle: article['description']);
-          articlesList.add(articleModel);
-        }
+      Map<String, dynamic> jsonData = response.data;
+      List<dynamic> articles = jsonData['articles'];
+      List<ArticleModel> articlesList = [];
 
-        return articlesList;
-      } catch (e) {
-        return [];
+      for (var article in articles) {
+        ArticleModel articleModel = ArticleModel(
+          image: article['urlToImage'],
+          title: article['title'],
+          subtitle: article['description'],
+        );
+        articlesList.add(articleModel);
       }
-    });
+
+      return articlesList;
+    } catch (e) {
+      return [];
+    }
   }
 }

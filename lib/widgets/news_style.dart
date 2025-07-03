@@ -6,6 +6,8 @@ class NewsStyle extends StatelessWidget {
 
   final ArticleModel articleModel;
 
+
+//! cached_network_image
   @override
   Widget build(BuildContext context) {
     return Column(

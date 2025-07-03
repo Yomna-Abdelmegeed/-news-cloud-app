@@ -9,7 +9,7 @@ class CategoryListView extends StatelessWidget {
         categoryImage: 'assets/business.avif', categoryTitle: 'business'),
     CategoryModel(
         categoryImage: 'assets/entertaiment.avif',
-        categoryTitle: 'entertaiment'),
+        categoryTitle: 'entertainment'),
     CategoryModel(
         categoryImage: 'assets/general.avif', categoryTitle: 'general'),
     CategoryModel(categoryImage: 'assets/health.avif', categoryTitle: 'health'),
@@ -28,11 +28,8 @@ class CategoryListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {},
-            child: CategoryCard(
-              category: categories[index],
-            ),
+          return CategoryCard(
+            category: categories[index],
           );
         },
       ),
