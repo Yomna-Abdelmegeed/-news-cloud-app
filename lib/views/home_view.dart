@@ -8,47 +8,41 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 80,
-          backgroundColor: Colors.white,
-          title: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('News', style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(
-                'Cloud',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 215, 193, 0),
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('News', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              'Cloud',
+              style: TextStyle(
+                  color: Color.fromARGB(255, 215, 193, 0),
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              SliverToBoxAdapter(
-                child: CategoryListView(),
+      ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: CategoryListView(),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 35,
               ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 35,
-                ),
-              ),
-              NewsListViewBuilder(),
-              // SliverToBoxAdapter(child: NewsListView() ,),
-            ],
-          ),
-          // child:  Column(
-          //   children: [
-          //     CategoryListView(),
-          //     SizedBox(height: 23,),
-          //     Expanded(child: NewsListView()),
-          //   ],
-          // ),
-        ));
+            ),
+            NewsListViewBuilder(),
+            // SliverToBoxAdapter(child: NewsListView() ,),
+          ],
+        ),
+      ),
+    );
   }
 }

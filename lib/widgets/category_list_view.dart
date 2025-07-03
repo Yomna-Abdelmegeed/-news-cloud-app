@@ -28,8 +28,11 @@ class CategoryListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
-          return CategoryCard(
-            category: categories[index],
+          return InkWell(
+            onTap: () {},
+            child: CategoryCard(
+              category: categories[index],
+            ),
           );
         },
       ),

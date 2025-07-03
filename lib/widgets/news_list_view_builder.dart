@@ -5,9 +5,9 @@ import 'package:news_app/services/news_services.dart';
 import 'package:news_app/widgets/news_list_view.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({
-    super.key,
-  });
+  final String? cat;
+
+  const NewsListViewBuilder({super.key, this.cat});
 
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
@@ -25,7 +25,7 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   }
 
   Future<void> getGeneralNews() async {
-    articles = await NewsServices(Dio()).gettNews();
+    articles = await NewsServices(Dio()).gettNews(category:  widget.cat);
     isLoading = false;
     setState(() {});
   }
@@ -38,10 +38,10 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
               child: CircularProgressIndicator(),
             ),
           )
-        : articles.isNotEmpty?  NewsListView(articles: articles) : 
-       const SliverToBoxAdapter(
-          child: Text('opps there was an error'),
-        )
-        ;
+        : articles.isNotEmpty
+            ? NewsListView(articles: articles)
+            : const SliverToBoxAdapter(
+                child: Text('opps there was an error'),
+              );
   }
 }
