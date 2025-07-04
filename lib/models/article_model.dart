@@ -1,11 +1,11 @@
 class ArticleModel {
-  final String? image;
+  final String? imageUrl;
   final String title;
-  final String? subtitle;
-  final String url;
+  final String? description;
+  final String link;
   ArticleModel(
-      {required this.url,
-      required this.image,
+      {required this.link,
+      required this.description,
       required this.title,
-      required this.subtitle});
+      required this.imageUrl});
 }

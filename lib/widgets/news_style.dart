@@ -14,7 +14,7 @@ class NewsStyle extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => WebView(url: articleModel.url),
+            builder: (context) => WebView(url: articleModel.link),
           ),
         );
       },
@@ -26,7 +26,7 @@ class NewsStyle extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(18),
               child: Image.network(
-                articleModel.image ??
+                articleModel.imageUrl ??
                     'https://www.thetombomb.com/images/ForPosts/null.png',
                 height: 200,
                 width: double.infinity,
@@ -51,7 +51,7 @@ class NewsStyle extends StatelessWidget {
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
             Text(
-              articleModel.subtitle ?? '',
+              articleModel.description ?? '',
               maxLines: 2,
               style: const TextStyle(fontSize: 14),
             ),
