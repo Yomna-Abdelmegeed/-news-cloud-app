@@ -44,16 +44,23 @@ class NewsStyle extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Text(
-              articleModel.title,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                articleModel.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
             ),
-            Text(
-              articleModel.description ?? '',
-              maxLines: 2,
-              style: const TextStyle(fontSize: 14),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                articleModel.description ?? '',
+                maxLines: 2,
+                style: const TextStyle(fontSize: 14),
+              ),
             ),
           ],
         ),
